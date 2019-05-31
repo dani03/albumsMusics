@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Linking } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 const AlbumDetail = ({ album }) => {
     // on effectue la destructuration de la album passer en parametre
     //  c-a-d on passe de {props.album.title} a {title}
-     const { title, thumbnail_image, artist, image } = album;
+     const { title, thumbnail_image, artist, image, url } = album;
      const { headerContentStyle,
              thumbnailStyle,
              headerTextStyle,
@@ -16,20 +17,27 @@ const AlbumDetail = ({ album }) => {
     return (
         <Card>
             <CardSection>
-            <View style={thumbnailContainerStyle}>
-                <Image 
-                 style={thumbnailStyle}
-                 source={{ uri: thumbnail_image }} 
-                />
-            </View>
+                <View style={thumbnailContainerStyle}>
+                    <Image 
+                    style={thumbnailStyle}
+                    source={{ uri: thumbnail_image }} 
+                    />
+                </View>
 
-            <View style={headerContentStyle}>
-                <Text style={headerTextStyle}>{ title }</Text>
-                <Text>{ artist }</Text>
-            </View>
+                <View style={headerContentStyle}>
+                    <Text style={headerTextStyle}>{ title }</Text>
+                    <Text>{ artist }</Text>
+                </View>
             </CardSection>
+
             <CardSection>
                  <Image style={imageStyle} source={{ uri: image }} />
+            </CardSection>
+
+            <CardSection>
+                <Button onPress={() => Linking.openURL(url)} >
+                    acheter sur amazon
+                </Button>
             </CardSection>
         </Card>
     );
