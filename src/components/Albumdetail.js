@@ -35,7 +35,9 @@ const AlbumDetail = ({ album }) => {
             </CardSection>
 
             <CardSection>
-                <Button onPress={() => Linking.openURL(url)} >
+            {/* linking openURL ici est une fonction react 
+            native qui permet d'ouvrir un lien exterieure a l'application */}
+                <Button onPress={() => Linking.openURL(url)}>
                     acheter sur amazon
                 </Button>
             </CardSection>
